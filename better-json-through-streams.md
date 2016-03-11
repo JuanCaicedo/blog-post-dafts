@@ -1,53 +1,29 @@
 # Better JSON through streams
 
-In this blog post, we're going to build something ridiculous. We will build an
-application with some arbitrary constraints and requirements, but those will
-give us the oportunity to explore some very interesting concepts.
+Web applications that handle big amounts of data are not easy. Receiving big
+amounts data is slow, cumbersome, and prone to failing, so it makes for a
+challenging user experience. Sending big amounts of data is also difficult,
+particularly when you start introducing some complexities into how that data
+needs to be processed before it can be sent.
 
-## What are we going to build?
+In this blog post, we're going to look at some of those challenges and model
+them with a simple web application.
 
-We're going to build a web app that builds show a grid will render this image
-on the page:
-
-![image of cat and sun]()
-
-The image is represented in JSON, or more specifically in [PXON](). It is an
-array of objects that include three properties, an X position, a Y position, and
-a color.
-
-Our page will have one big div broken up into rows and columns of other divs,
-styled to look like a grid. For each point, we'll want the div that corresponds
-to it's X and Y postion to have a CSS class to style it with a background color.
-
-### Constraints
-
-#### Multiple data sources
-
-The points for the cat are going to be stored in a JSON file on our server. The
-points for the sun are going to be stored in a JSON file that we will fetch
-over HTTP from GitHub.
-
-#### Huge response
-
-Our JSON is going to be unecessarily big. Impractictically big. In fact, each
-point in the cat JSON is going to contain 100 uneeded properties just to make
-the file pretty big, about 500k. If that doesn't seem unreasonable, don't worry,
-the sun points are going to have 600 uneeded properties, making that JSON about
-1mb.
-
-#### Bad connections
-
-We want people to be able to use this app even if they have a bad connection.
-
-## Problems
+## Difficulties
 
 ### Slow and coupled server responses
 
-If we make this app completely server-rendered, the response is going to be
-slow. The server is going to read the entire cat json and sun json before it can
-respond to the client. That means that our response is also slowed down by the
-time it takes to make a request to GitHub and receive a response. That is, our
-server response time is determined by the slowest operation in our logic.
+Assembling a big HTML page server-side and sending it to the user is slow. Worse
+than the actual speed of it is the perception of speed. If a user requests a
+page and then has to sit around waiting before they see anything on the screen,
+they get unhappy.
+
+Speeding up the initial server response should always be a performance goal,
+but it becomes difficult to achieve when you think about the fact that our
+response is dictated by the slowest operation we need to perform. If assembling
+our large chunk of data involves making a request to another service, our
+response is going to be at least as slow as our request/response cycle with
+that service.
 
 ### Big AJAX request are slow and brittle
 
@@ -58,34 +34,69 @@ then after that make a request to get the data we will need. Then once we have
 that data, we can render it to the user.
 
 However, moving the data operation to the front-end doesn't necessarily make it
-any faster. In fact, it will make it a lot slower, since most clients are slower
-than most servers, and they are likely to be on lower quality, slower
-connections. The user will still have to wait for all of the data to be ready
-before getting to see it, and any connection problems will lead to all of the
-data being unavailable
+any faster. In fact, it will likely make it slower, since most clients are
+less powerful than most servers, and they are likely to be on lower quality,
+slower connections. The user will still have to wait for all of the data to be
+ready before getting to see it, and any connection problems will lead to all of
+the data being unavailable.
 
 ### Multiple AJAX requests increase complexity
 
 A better option could be to break up that large AJAX request into many smaller
-requests, then as each one of those reponses finishes, plotting its results onto
-the page. This incremental approach would lead to a much better user experience
-because users can start seeing data as soon as it's available instead of having
-to wait for all the data. It would also be much robust to lost connections as
-each request could fail individually without affecting the other data which has
-already been successfully received.
+requests, then as each one of those reponses finishes, plot its results on
+the page. This incremental approach generally leads to a much better user experience
+because users can start seeing and interacting with data as soon as it's
+available instead of having to wait for all the data. It is also much robust
+to lost connections as each request can fail individually without affecting
+data which has already been successfully loaded.
 
-Handling many more requests is no simple feat though. Our client-side logic is
-going to have to be more complex, because it now needs to know how much data to
-request. The server-side logic will also need to be more complex because it will
-need a mechanism to tell which data the client has and hasn't received.
+Handling many more requests is no simple feat though. Our client-side logic has
+to become more complex, because it now needs to know how much data to request.
+The server-side logic will also need to be more complex because it will need a
+mechanism to tell which data the client has and hasn't received.
+
+## What are we going to build?
+
+We're going to model these difficulties through a web app that renders an
+adorable 8-bit pixel art cat with some sun shining down on it.
+
+![image of cat and sun]()
+
+The image is represented in JSON. It is an array of objects that include three
+properties, an X position, a Y position, and a color.
+
+Our page will have one big div (representing a grid) broken up into many other
+divs (representing rows) broken up into many other divs (representing cells).
+For each point, we'll want the cell that corresponds to its X and Y postion to
+have a CSS class to style it with a background color.
+
+### Constraints
+
+#### Multiple data sources
+
+The points for the cat are going to be stored in a JSON file on our server. The
+points for the sun are going to be stored in a JSON file that we will fetch
+over HTTP GitHub.
+
+#### Huge response
+
+Our JSON is going to be impractically big. Unnecessarily big. In fact, each
+point in the cat JSON is going to contain 100 uneeded properties just to make
+the file pretty big, about 500k. If that doesn't seem unreasonable, don't worry,
+the sun points are going to have 600 uneeded properties, making that JSON about
+1mb.
+
+#### Bad connections
+
+We want people to be able to use this app even if they have a bad connection.
 
 ## Our solution
 
-We are going to build client side that makes a single request to the server. It
+We are going to build client-side that makes a single request to the server. It
 will have a single event handler that tells it how to handle a single point
 when it receives one.
 
-Then we're going to build a server that streams a JSON response to the client,
+Then we're going to build a server-side that streams a JSON response to the client,
 making it so that we don't have to wait for all the data to be ready before we
 start responding.
 
@@ -105,6 +116,7 @@ whole document has been parsed.
 ```javascript
 var source = //url or readable stream
 var pattern = //string representing a node in the tree
+
 oboe(source)
   .node(pattern, function(data){
     // you can use the data however you want
