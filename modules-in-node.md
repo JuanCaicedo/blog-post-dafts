@@ -178,3 +178,7 @@ first, but it's an incredibly useful tool for organizing your code. It helps to
 know that there's nothing complicated going on, just simple javascript
 functions. In fact, the patterns you just learned are the same used in all
 Node modules you may find in the wild, and even in the Node core itself!
+
+I would recommend you work through this exercise on your own (you're smart, you
+can do it!), but afterwards in you're interested in seeing my solution, it's
+posted [here](https://gist.github.com/JuanCaicedo/5d45403382d998508239ea6fb6837d13).
