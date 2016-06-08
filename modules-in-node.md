@@ -1,8 +1,8 @@
 # Multiple modules in Node.js
 
 I'm one of the organizers for [NodeSchoolDC](http://nodeschool.io/washingtondc/)
-and at of our meetups I see people get stuck on the exact same problem all the
-time. That problem isis exercise 6, `Make it Modular`, which is first time
+and at our meetups I see people get stuck on the exact same problem all the
+time. That problem is exercise 6, `Make it Modular`, which is the first time
 that you have to write a program that is split across two different files. I
 wanted to go ahead and explain it here to clear things up.
 
@@ -33,7 +33,7 @@ module.exports = function(a, b) {
 var func = require('./my-module');
 
 var result = func(1, 2);
-console.log(result); // first: a, second: b
+console.log(result); // first: 1, second: 2
 ```
 
 You don't have to define the variable or function right then, it can be defined
@@ -73,7 +73,7 @@ console.log(result); // first: a, second: inside
 ```
 
 However, the file that requires that module doesn't have access to any of those
-variable.
+variables.
 
 ```javascript
 /* my-module.js */
@@ -176,9 +176,9 @@ needs to get called inside the callback given to `fs.readdir`.
 The concept of splitting code across different modules can be pretty daunting at
 first, but it's an incredibly useful tool for organizing your code. It helps to
 know that there's nothing complicated going on, just simple javascript
-functions. In fact, the patterns you just learned are the same used in all
+functions. In fact, the patterns you just learned are the same ones used in all
 Node modules you may find in the wild, and even in the Node core itself!
 
 I would recommend you work through this exercise on your own (you're smart, you
-can do it!), but afterwards in you're interested in seeing my solution, it's
+can do it!), but afterwards if you're interested in seeing my solution, it's
 posted [here](https://gist.github.com/JuanCaicedo/5d45403382d998508239ea6fb6837d13).
