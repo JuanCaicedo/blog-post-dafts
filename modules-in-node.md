@@ -17,8 +17,8 @@ whatever is the value of that file's `module.exports`.
 module.exports = 'hello world';
 
 /* main.js */
-var x = require('./my-module');
-console.log(x); // hello-world
+var imported = require('./my-module');
+console.log(imported); // hello-world
 ```
 
 This value could be anything, including a function.
@@ -30,9 +30,9 @@ module.exports = function(a, b) {
 };
 
 /* main.js */
-var func = require('./my-module');
+var myFunction = require('./my-module');
 
-var result = func(1, 2);
+var result = myFunction(1, 2);
 console.log(result); // first: 1, second: 2
 ```
 
@@ -45,10 +45,10 @@ var myVar = 'hello-world';
 module.exports = myVar;
 
 /* or also */
-function myFunc(a, b) {
+function myFunction(a, b) {
   return 'first: ' + a + ', second: ' + b;
 }
-module.exports = myFunc;
+module.exports = myFunction;
 ```
 
 ## Scope inside a module
@@ -68,8 +68,8 @@ module.exports = function(a) {
 /* main.js */
 var func = require('./my-module');
 
-var result = func(1);
-console.log(result); // first: a, second: inside
+var result = func('outside');
+console.log(result); // first: outside, second: inside
 ```
 
 However, the file that requires that module doesn't have access to any of those
@@ -112,7 +112,7 @@ The code above can really easily be split up into multiple modules.
 ```javascript
 /* my-module.js */
 var myFunction = function(a, cb) {
-  cb('first', a);
+  cb('inside', a);
 }
 
 module.exports = myFunction;
@@ -120,9 +120,9 @@ module.exports = myFunction;
 /* main.js*/
 var myModule = require('./my-module');
 
-myModule('second', function(myFirst, mySecond) {
+myModule('outside, function(myFirst, mySecond) {
   console.log('first: ', myFirst, ', second: ', mySecond)
-  // => first: first, second: second
+  // => first: inside, second: outside
 });
 ```
 
@@ -134,20 +134,20 @@ look like this:
 ```javascript
 /* my-module.js */
 var myFunction = function(a, cb) {
-  cb(null, 'first', a);
+  cb(null, 'inside', a);
 }
 
-module.exports = myFun
+module.exports = myFunction;
 
 /* main.js*/
 var myModule = require('./my-module');
 
-myModule('second', function(null, myFirst, mySecond) {
+myModule('outside', function(null, myFirst, mySecond) {
   if (error) {
     return console.log('Error!:', error);
   }
   console.log('first: ', myFirst, ', second: ', mySecond)
-  // => first: first, second: second
+  // => first: inside, second: outside
 });
 ```
 
