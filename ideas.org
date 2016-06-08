@@ -1,0 +1,20 @@
+* Why I use spacemacs
+I've really liked using spacemacs as my primary editor since 2016 and I could
+share some of the reasons why
+- Vim
+- Awesome shortcuts
+- No set up
+- Great ui
+* Note taking
+- Why note taking is useful
+- Strategies for note taking
+* My essential toolkit
+The essential tools I use
+- Spacemacs
+- Org mode
+- Iterm
+- Vimium
+- Sublime
+- Flux
+- Caps lock to cmd tab
+- Evernote
