@@ -76,7 +76,7 @@ with a lot of windows, and with no good way to flip between them quickly.
 
 I navigate files in two main ways with Spacemacs. ~SPACE p p~ let's you fuzzy
 match any directory on your system, then any file within that directory.
-And `SPACE f t` opens up a file system explorer that's extremly quick and easy
+And `SPACE f t` opens up a file system explorer that's extremely quick and easy
 to navigate.
 
 *** Buffer editing is better
@@ -93,5 +93,5 @@ different tastes and it's silly to expect something to work for everyone. If
 your current editor works great for you, there is no need to change it.
 
 But if you have some of the same pain points I did, I strongly encourage you to
-try out Spacemacs. You will not feel like youare choosing between Vim and Emacs,
+try out Spacemacs. You will not feel like you're choosing between Vim and Emacs,
 you are truly getting the best of both worlds.
