@@ -1,13 +1,13 @@
 * Why I use Spacemacs
 
-Software engineering is a craft, and one of the most important thing to any
-craftman (or craftwoman!), is their tools. Editor choice is a very personal and
-[[https://en.wikipedia.org/wiki/Editor_war][controversial topic]]. I don't want to prescribe that anyone should use what I
+Software engineering is a craft, and some of the most important things for any
+craftsman (or craftswoman!) are their tools. Editor choice is a very personal
+and [[https://en.wikipedia.org/wiki/Editor_war][controversial topic]]. I don't want to prescribe that anyone should use what I
 use, but I do want to add my two cents as to why I'm incredibly happy with the
 choice I made.
 
-I use a project called Spacemacs as my main editor for almost any task. I
-really love it. I actually contribute [[https://salt.bountysource.com/teams/spacemacs/supporters][a little every month]] to help fund its
+I use a project called Spacemacs as my main editor for almost any task. I really
+love it. I actually contribute [[https://salt.bountysource.com/teams/spacemacs/supporters][a little every month]] to help fund its
 development.
 
 ** What is Spacemacs?
@@ -16,13 +16,13 @@ development.
 best of Vim and Emacs, and it does so with a focus on ease of use and
 productivity.
 
-I had been thinking about trying either Vim or Emacs for a while. I liked
-the idea of Vim's keybinding and learning them so I could have a text editor
+I had been thinking about trying either Vim or Emacs for a while. I liked the
+idea of Vim's keybindings and learning them so I could have a text editor
 available on whatever machine I use.
 
-But I had also heard a ton about how many great things you can do completely
-inside Emacs. Given I started out as a Java developer using [[https://eclipse.org/][Eclipse]], I like
-the idea of being able to do a lot inside one same tool.
+But I had also heard how many great things you can do completely inside Emacs. I
+started out as a Java developer using [[https://eclipse.org/][an really robust IDE]], so I've grown to
+like the idea of being able to do a lot inside one same tool.
 
 *** Ergonomic
 
@@ -32,9 +32,9 @@ emulation around.
 
 Commands are also mnemonic and therefore easy to remember:
 
-- To save - ~SPACE f s~ (space file save)
-- To switch buffer - ~SPACE b n~ (space buffer next)
-- To split windows - ~SPACE w 2~ (space window two)
+- To save - ~SPC f s~ (space file save)
+- To switch buffer - ~SPC b n~ (space buffer next)
+- To split windows - ~SPC w 2~ (space window two)
 
 *** No set-up!
 
@@ -48,17 +48,17 @@ And it looks really good, no need to fiddle with the themes to make it pretty.
 New tools have learning curves. Emacs is particularly infamous for having a
 steep learning curve.
 
-Most new Spacemac users are surprised to find it has a pleasantly low learning
-curve.
+Most new Spacemacs users are surprised to find how quickly they can become
+productive using it.
 
-Whenever you start a Spacemacs command (by pressing ~SPACE~) a pop-up menu
-appears listing all possible keys you could press from there. Help arrives
-just in time, not a moment before or after.
+Whenever you start a Spacemacs command (by pressing ~SPC~) a pop-up menu appears
+listing all possible keys you could press from there. Help arrives just in time,
+not a moment before or after.
 
 ** Why I left Sublime
 
 I started my days as a javascript developer using [[https://www.sublimetext.com/][Sublime Text]]. I had a lot of
-fun with Sublime, and a still keep it around on my machine because I love how it
+fun with Sublime, and I still keep it around on my machine because I love how it
 does [[https://youtu.be/WXuBgSpLpK4?t=58s][multiple cursors]].
 
 *** Too many windows
@@ -67,30 +67,34 @@ However, at Curiosity Media we structure our apps around a service-oriented
 architecture. In fact, a website like [[http://www.spanishdict.com/traductor/][SpanishDict]] has around 15 separate
 services we leverage.
 
-How I used Sublime was fairly typical, I would type ~subl .~ from my terminal
-to launch a new Sublime window at the current working directory. If I needed
-to do some work in another repo, I launched a new window. Soon I ended up
-with a lot of windows, and with no good way to flip between them quickly.
+How I used Sublime was fairly typical, I would type ~subl .~ from my terminal to
+launch a new Sublime window at the current working directory. If I needed to do
+some work in another repo, I launched a new window. Soon I ended up with a lot
+of windows, and with no good way to flip between them quickly.
 
 *** Navigate the file tree
 
-I navigate files in two main ways with Spacemacs. ~SPACE p p~ let's you fuzzy
-match any directory on your system, then any file within that directory.
-And `SPACE f t` opens up a file system explorer that's extremely quick and easy
-to navigate.
+I navigate files in two main ways with Spacemacs. ~SPC p p~ lets you fuzzy match
+any directory on your system, then any file within that directory. And `SPC f t`
+opens up a file system explorer that's extremely quick and easy to navigate.
 
 *** Buffer editing is better
 
-Vim and Emacs use buffers. A buffer is a file loaded into memory so that you
-can edit it. Buffers are infinitely better than Sublime tabs. You can switch
-between them quicker and you can open as many as you want (have you ever had
-10+ Sublime tabs open? They get hard to read).
+In Sublime, when you edit a new file, you open a new tab. If you open up 10
+files, you end up with 10 tabs. The titles become impossible to read!
+
+Vim and Emacs use buffers. Files loaded into memory as buffers when you want to
+edit them. Your window only displays the current buffer, but you can easily
+access any other buffer and switch to it. The UI around them is much cleaner
+
+It's [[https://github.com/JuanCaicedo/blog-post-dafts/pull/5#discussion_r68699791][possible to set up a similar workflow in Sublime]], but doing so involves
+installing additional plugins.
 
 ** Be pragmatic
 
-I wouldn't tell anyone they should use Spacemacs. I think everyone has
-different tastes and it's silly to expect something to work for everyone. If
-your current editor works great for you, there is no need to change it.
+I wouldn't tell anyone they should use Spacemacs. I think everyone has different
+tastes and it's silly to expect something to work for everyone. If your current
+editor works great for you, there is no need to change it.
 
 But if you have some of the same pain points I did, I strongly encourage you to
 try out Spacemacs. You will not feel like you're choosing between Vim and Emacs,
