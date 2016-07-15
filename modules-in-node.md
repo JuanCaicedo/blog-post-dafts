@@ -41,10 +41,6 @@ earlier.
 
 ```javascript
 /* my-module.js */
-var myVar = 'hello-world';
-module.exports = myVar;
-
-/* or also */
 function myFunction(a, b) {
   return 'first: ' + a + ', second: ' + b;
 }
@@ -120,7 +116,7 @@ module.exports = myFunction;
 /* main.js*/
 var myModule = require('./my-module');
 
-myModule('outside, function(myFirst, mySecond) {
+myModule('outside', function(myFirst, mySecond) {
   console.log('first: ', myFirst, ', second: ', mySecond)
   // => first: inside, second: outside
 });
