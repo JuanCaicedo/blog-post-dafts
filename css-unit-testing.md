@@ -15,7 +15,7 @@ development) is that they give you a safe way to refactor your code.
 
 ## Refactoring, with tests
 
-All systems trends towards complexity. In other words, overtime all projects
+All systems trend towards complexity. In other words, over time all projects
 build
 up [techincal debt](https://www.techopedia.com/definition/27913/technical-debt).
 I find refactoring to be one of the most valuable things a software engineer can
@@ -27,7 +27,7 @@ Building up good test coverage gives you a quick way of verifying that all your
 code works the way you expect it to. That way after you refactor code, you can
 be sure that you haven't changed its behavior.
 
-## How I got to front-end development
+## How I got to into front-end development
 
 I started out my career as a Java developer, working almost exclusively in the
 front end. Testing and TDD are pretty mature in the Java community, so I got
@@ -62,9 +62,9 @@ with all our CSS code, I realized something surprising.
 
 A lot of it was kind of a mess.
 
-Not for any particular reason. Overtime requirements have changed, as has the
+Not for any particular reason. Over time requirements have changed, as has the
 structure of the site and our knowledge of best practices. Also, the browsers we
-support have changed as, have the tricks we have to do to make the site
+support have changed, as have the tricks we have to do to make the site
 compatible with all of them.
 
 We have a lot of legacy CSS. But I felt a bad feeling when I wanted to go back
