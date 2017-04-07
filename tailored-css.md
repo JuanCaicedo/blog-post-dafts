@@ -2,9 +2,10 @@
 
 ## The site should be fast
 
-We value site speed a lot at SpanishDict.com. As we've started expanding our
-site into Latin America, this has become even more important. Connection speeds
-tend to be slower than in the USA, so optimizing for them is always on our mind.
+We value site speed a lot at SpanishDict.com. As we've made growing Latin
+American traffic a priority, this has become even more important. Connection
+speeds tend to be slower than in the USA, so optimizing for them is always on
+our mind.
 
 In researching how to improve our site's speed, a recurring theme is that
 [perceived speed tends to be more important than actual speed](http://blog.teamtreehouse.com/perceived-performance).
@@ -13,18 +14,23 @@ We're always on the lookout for ways to make the site _feel_ faster.
 ## State of CSS at SpanishDict
 
 One of the things that can slow down how a site feels (it certainly did for us)
-is blocking CSS. When you add a `link` tag, the browser has to first load and
-parse the entire file, because it doesn't know how to render the content without
-it.
+is when CSS blocks [rendering](https://jakearchibald.com/2016/link-in-body/).
+When you add a `link` tag, the browser has to first load and parse the entire
+file, because it doesn't know how to render the content without it.
 
-Our CSS is not well organized, and as a result our css files are large. For
-desktop, we build one large file that contains all the styles for our read-only
-pages (pages
+For desktop, we build one large file that contains all the styles for our
+read-only pages (pages
 like
 [translations](http://www.spanishdict.com/translate/ser),
 [conjugations](http://www.spanishdict.com/conjugate/ser),
 and [grammar articles](http://www.spanishdict.com/guide/ser-vs-estar)).
-That file comes out to about 40kb _after_ being minified and gzipped.
+This was a
+conscious decision, because having only one file meant the browser only had to
+make one request to get styles, and that file could get cached over multiple
+pageviews.
+
+Our desktop css file comes out to about 40kb _after_ being minified and gzipped.
+That's pretty large for something that blocks rendering.
 
 We picked up an approach known as
 [critical CSS](https://www.smashingmagazine.com/2015/08/understanding-critical-css/),
@@ -35,7 +41,7 @@ lets that content load much faster, so users feel the site is faster 🙌
 ## How do we build it?
 
 For about a year, we took an mvp approach to this. We built a separate
-`critical.CSS` file and we would deciding what styles could go above the fold
+`critical.CSS` file and we would decide what styles could go above the fold
 and which couldn't.
 
 This wasn't easy. It meant that every time we added new styles, we had to figure
@@ -77,8 +83,8 @@ have a dialogue box.
 
 Our solution is to run Penthouse for each state, for each screen size, for each
 page category. The styles for each page category are then concatenated together
-and run through a series of postCSS plugins that deduplicate styles, organize
-media queries, and minify the files.
+and run through a series of [PostCSS](http://postcss.org/) plugins that
+deduplicate styles, organize media queries, and minify the files.
 
 ## Increased complexity in development
 
@@ -109,12 +115,12 @@ services that make up our site and recent database snapshot.
 Tailored CSS definitely got the job done, but it also generated a huge amount of
 technical debt. We are definitely open to other alternatives.
 
-One approach that I would love to take is to reorganize our UI code into
-components. It's hard to figure out which styles are above the fold, but much
-easier to reason through which components could be rendered above the fold. With
-that, we could manually listing the components that should be considered
-critical and build a CSS file from that. However, reorganizing styles would
-require a significant time investment with no immediate business value.
+One approach that's on the horizon is reorganizing our UI code into components.
+It's hard to figure out which styles are above the fold, but much easier to
+reason through which components could be rendered above the fold. With that, we
+could manually list the components that should be considered critical and build
+a CSS file from that. However, like most refactorings, reorganizing styles would
+require a significant time investment with no immediate end-user value.
 
 Have you tried building anything like tailored CSS? From what I can tell, it's
 widely recommended, but not widely done. If so, let me know!
