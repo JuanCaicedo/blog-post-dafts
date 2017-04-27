@@ -124,3 +124,9 @@ require a significant time investment with no immediate end-user value.
 
 Have you tried building anything like tailored CSS? From what I can tell, it's
 widely recommended, but not widely done. If so, let me know!
+
+## Tailored CSS script
+
+If you're interested in how we build our tailored css, an abridged example is
+available
+[here](https://gist.github.com/JuanCaicedo/9ddca0988e41f3955e3ef232b2090176).
