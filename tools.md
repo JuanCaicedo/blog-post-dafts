@@ -89,6 +89,19 @@ Click on a tab to closes it. This makes it so I can keep old tabs open as I
 navigate (which you can do with option + click), but keep my tabs under control
 so I don't have a ton of them open (which you can't do with option + click).
 
+## Vimium
+
+This Chrome extension is unreal.
+
+[Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en)
+adds some keyboard shortcuts to chrome so that you can scroll around a page
+without needing to take your hands off the keyboard. That's awesome.
+
+But wait, it gets better. If you press the `f` key, every link on the page shows
+a combination of letters next to it. If you press those keys, Vimium clicks on
+the link. This _really_ makes it so that you can navigate with just the
+keyboard, it is amazing!
+
 ## Alfred
 
 Some people like Spotlight. I do not like Spotlight. It feels slow and I can
