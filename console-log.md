@@ -3,9 +3,21 @@
 ## Introduction
 
 Against all best practices, I debug js code using `console.log`. I also use
-Spacemacs, which I [wrote about before](). Typing this code over and over again
-became tedious, so I wanted a way to make it faster. It was also one of the
-first things I ever wrote in elisp, so here's what I learned.
+Spacemacs, which I [wrote about
+before](https://medium.com/@_juancaicedo/why-i-use-spacemacs-d6c0ef1a9b00).
+Typing this code over and over again became tedious, so I wanted a way to make
+it faster.
+
+```js
+// I wanted to type a variable
+foo
+
+// And easily turn it into this
+console.log("foo", foo)
+```
+
+This was one of the first things I ever wrote in elisp, so here's
+what I learned.
 
 ## Defining a new binding
 
