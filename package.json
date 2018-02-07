@@ -1,0 +1,23 @@
+{
+  "name": "blog-post-dafts",
+  "version": "1.0.0",
+  "description": "A place to put up drafts for blog posts to share, discuss, and get feedback.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuanCaicedo/blog-post-drafts.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JuanCaicedo/blog-post-drafts/issues"
+  },
+  "homepage": "https://github.com/JuanCaicedo/blog-post-drafts#readme",
+  "dependencies": {
+    "markdown-to-medium": "^1.4.1"
+  }
+}
