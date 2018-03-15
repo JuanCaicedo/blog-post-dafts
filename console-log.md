@@ -76,5 +76,5 @@ paying for coaching to help you improve at skills is always a great investment.
 [Codementor](https://www.codementor.io/) is a platform that allows you to hire
 programmers to coach you in specific areas. Most of what I learned for this key
 binding came from pairing with [Rudolf
-Olah](https://www.codementor.io/rudolfolah), who was very patient when I got
+Olah](https://neverfriday.com/), who was very patient when I got
 frustrated during the learning. Thanks Rudolf!
